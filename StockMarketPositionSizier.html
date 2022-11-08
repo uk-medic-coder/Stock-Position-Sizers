@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="jquery3.1.js"></script>
+
+<script>
+$(document).ready(function(){
+    function callit()
+    {
+        var accvl2 = $("#tav").val() * ($("#asx").val() / 100);
+        var accvl = accvl2 / $("#nos").val()
+
+        var prc = parseInt($("#cp").val());
+        var tp = prc + (prc * ($("#tpv").val() / 100));
+        $("#tp").text(tp.toFixed(2));
+
+        var sl = prc - (prc * ($("#slv").val() / 100));
+        $("#sl").text(sl.toFixed(2));
+
+        var qq = accvl / prc;
+        $("#shrs").text(qq.toFixed(1));
+}
+
+  $("#cp").on("input", function(){
+            callit();
+  });  
+  
+  });
+
+</script>
+
+<style>
+body {
+    font-size: 20px;
+    line-height: normal;
+	margin: 30px;
+	padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+.mainheader
+{
+    color: #000;
+    font-size: 34px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.col1
+{
+    padding: 0 0 15px 30px;
+}
+.col2
+{
+    padding: 0 0 15px 30px;
+    color: #990000;
+}
+.colline
+{
+    border-top: 1px solid black;
+    padding: 0 0 15px 30px;
+}
+button
+{
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="mainheader">Alex's Amazing Position Sizer</div>
+<br/>
+<table>
+<tr><td class="col1">Total Account Value:</td><td class="col1"><input type="text" id="tav" value="14000"></td></tr>
+<tr><td class="col1">What % of total account am I <br/>OK using for all trades?:</td><td class="col1"><input type="text" id="asx" value="100"></td></tr>
+<tr><td class="col1"># of stocks to buy:</td><td class="col1"><input type="text" id="nos" value="10"></td></tr>
+<tr><td class="col1">TP%</td><td class="col1"><input type="text" id="tpv" value="55"></td></tr>
+<tr><td class="col1">SL%</td><td class="col1"><input type="text" id="slv" value="55"></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+<tr><td class="col1">Price</td><td class="col1"><input type="text" id="cp" value=""></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+<tr><td class="col1">#Shares</td><td id="shrs" class="col2"></td></tr>
+<tr><td class="col1">TP:</td><td id="tp" class="col2"></td></tr>
+<tr><td class="col1">SL:</td><td id="sl" class="col2"></td></tr>
+</table>
+
+<h4>Bracket order for buy, tp and SL. Remember one must cancel the other</h4>
+<h4>GTC for order timescale, not day!</h4>
+
+</body>
+</html>

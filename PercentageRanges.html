@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="jquery3.1.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    function callit()
+    {
+        var qq = $("#vl").val() * ($("#pr").val() / 100);
+        var tp = parseFloat($("#vl").val()) + qq;
+        var bt = parseFloat($("#vl").val()) - qq;
+        //alert(typeof(qq));
+        tp = tp.toFixed(2);
+        bt = bt.toFixed(2);
+        
+        $("#an").html(bt+" -- <span style='color:black'>"+$("#vl").val()+"</span> -- "+tp);        
+    }
+
+  $("#vl").on("input", function(){
+            callit();
+  });
+
+  $("#pr").on("input", function(){
+            callit();
+  });  
+  
+});
+
+// <tr><td class="col1">Time Period (Yrs):</td><td class="col1"><input type="text" id="yrs"></td></tr>
+// <tr><td class="col1">Multiplier</td><td id="mmd" class="col2"></td></tr>
+// <tr><td></td><td><button id="btn">CALCULATE</button></td></tr>
+</script>
+
+<style>
+body {
+    font-size: 20px;
+    line-height: normal;
+	margin: 30px;
+	padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+.mainheader
+{
+    color: #000;
+    font-size: 34px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.col1
+{
+    padding: 0 0 15px 30px;
+}
+.col2
+{
+    padding: 0 0 15px 30px;
+    color: #990000;
+}
+.colline
+{
+    border-top: 1px solid black;
+    padding: 0 0 15px 30px;
+}
+button
+{
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="mainheader">% Ranges</div>
+<br/>
+<table>
+<tr><td class="col1">Value:</td><td class="col1"><input type="text" id="vl"></td></tr>
+<tr><td class="col1">% Range:</td><td class="col1"><input type="text" id="pr"></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+<tr><td class="col1">Range:</td><td id="an" class="col2"></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+</table>
+</body>
+</html>

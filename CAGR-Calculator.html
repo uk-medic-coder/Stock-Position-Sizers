@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="jquery3.1.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    function callit()
+    {
+        var dys = ($("#ey").val() - $("#sy").val() )*365;
+        var dd = ($("#ep").val() / $("#sp").val());
+        var ff = Math.pow(dd, (365/dys));
+        var ee = ff - 1;
+        var pd = 100 * ee;
+
+        pd = pd.toFixed(1);
+        
+        $("#pd").text(pd+"%");      
+        
+        var ppy =(($("#ep").val() - $("#sp").val()) / $("#sp").val())*100;
+        var ppyy = ppy / (dys/365);
+        
+        ppyy = ppyy.toFixed(1);
+
+        $("#ppy").text(ppyy+"%");      
+    }
+
+  $("#sp").on("input", function(){
+            callit();
+  });
+
+  $("#ep").on("input", function(){
+            callit();
+  });  
+
+  $("#sy").on("input", function(){
+            callit();
+  });
+
+  $("#ey").on("input", function(){
+            callit();
+  });  
+  
+});
+
+// <tr><td class="col1">Time Period (Yrs):</td><td class="col1"><input type="text" id="yrs"></td></tr>
+// <tr><td class="col1">Multiplier</td><td id="mmd" class="col2"></td></tr>
+// <tr><td></td><td><button id="btn">CALCULATE</button></td></tr>
+</script>
+
+<style>
+body {
+    font-size: 20px;
+    line-height: normal;
+	margin: 30px;
+	padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+.mainheader
+{
+    color: #000;
+    font-size: 34px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.col1
+{
+    padding: 0 0 15px 30px;
+}
+.col2
+{
+    padding: 0 0 15px 30px;
+    color: #990000;
+}
+.colline
+{
+    border-top: 1px solid black;
+    padding: 0 0 15px 30px;
+}
+button
+{
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="mainheader">CAGR calc</div>
+<br/>
+<table>
+<tr><td class="col1">Start Price:</td><td class="col1"><input type="text" id="sp"></td></tr>
+<tr><td class="col1">End Price:</td><td class="col1"><input type="text" id="ep"></td></tr>
+<tr><td class="col1">Start Year:</td><td class="col1"><input type="text" id="sy"></td></tr>
+<tr><td class="col1">End Year:</td><td class="col1"><input type="text" id="ey"></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+<tr><td class="col1">%CAR</td><td id="pd" class="col2"></td></tr>
+<tr><td class="col1">% Per year</td><td id="ppy" class="col2"></td></tr>
+<tr><td class="colline" colspan="2"></td></tr>
+</table>
+</body>
+</html>
